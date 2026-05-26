@@ -319,7 +319,7 @@ nav {
 .cta-inner {
   background:
     linear-gradient(rgba(10,10,10,0.72), rgba(10,10,10,0.82)),
-    url('https://pics.vwgroup.se/prod/FKP72X/FKP72X.jpg') center 40%/cover no-repeat;
+    url('./Pics/porsche.png') center 40%/cover no-repeat;
   border-radius: 24px; padding: 80px 48px; text-align: center;
   border: 1px solid var(--border); max-width: 1160px; margin: 0 auto;
 }
