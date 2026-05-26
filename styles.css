@@ -29,8 +29,8 @@ nav {
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 32px;
-  gap: 16px;
 }
 
 .nav-logo {
@@ -42,15 +42,17 @@ nav {
   color: var(--white);
   text-decoration: none;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1001;
 }
 .nav-logo span { color: var(--red); }
 
-/* Three-column desktop layout: logo | flex:1 centered links | CTA */
 .nav-center {
-  flex: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 36px;
 }
 
@@ -80,6 +82,8 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   transition: background .2s;
+  position: relative;
+  z-index: 1001;
 }
 .nav-cta:hover { background: #c93c3c; }
 
@@ -91,6 +95,8 @@ nav {
   background: none;
   border: none;
   padding: 6px;
+  position: relative;
+  z-index: 1001;
 }
 .hamburger span {
   display: block;
@@ -99,6 +105,9 @@ nav {
   border-radius: 2px;
   transition: .3s;
 }
+
+.mobile-only { display: none; }
+.desktop-only { display: inline-flex; }
 
 /* ── HERO ── */
 .hero {
@@ -436,73 +445,42 @@ footer {
 /* ── ≤900px  Tablet + mobile ── */
 @media (max-width: 900px) {
 
-  /* Sticky so the open dropdown extends the nav in document flow,
-     pushing page content down instead of overlaying it.
-     flex-wrap lets .nav-center become a second full-width row. */
-  nav {
-    position: sticky;
-    top: 0;
-    height: auto;
-    min-height: 68px;
-    flex-wrap: wrap;
-    padding: 0 20px;
-    gap: 0;
-    justify-content: space-between;
-    align-items: center;
-  }
+  nav { padding: 0 20px; }
 
-  /* Logo left, hamburger right — both in the first flex row */
-  .nav-logo {
-    order: 1;
-    flex-shrink: 0;
-  }
+  .desktop-only { display: none !important; }
 
-  .hamburger {
-    order: 2;
-    display: flex;
-  }
+  .hamburger { display: flex; }
 
-  /* Nav links: hidden by default, full-width second row when open */
   .nav-center {
-    order: 3;
-    flex: none;
-    flex-basis: 100%;
     display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    transform: none;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 0;
-    padding: 8px 0 12px;
-    border-top: 1px solid var(--border);
+    align-items: center;
+    text-align: center;
+    background: rgba(10,10,10,0.97);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 24px;
+    gap: 20px;
+    z-index: 998;
   }
+
   .nav-center.open { display: flex; }
 
-  .nav-center a {
-    padding: 13px 24px;
-    font-size: 14px;
-    width: 100%;
-    text-align: center;
-  }
+  .nav-center a { width: 100%; text-align: center; }
 
-  /* Ring Nu: hidden in the top bar; shown as a third row via the
-     adjacent-sibling selector when the dropdown opens */
-  .nav-cta {
-    order: 4;
-    flex-basis: 100%;
-    display: none;
+  .nav-cta.mobile-only {
     width: 100%;
-    margin: 4px 0 12px;
-    padding: 13px 20px;
-    border-radius: 0;
-    text-align: center;
+    display: flex;
     justify-content: center;
+    padding: 12px;
   }
-  .nav-center.open + .nav-cta { display: block; }
 
-  /* Hero: sticky nav is in document flow, reduce top padding */
+
   .hero {
-    padding-top: 60px;
-    min-height: calc(100vh - 68px);
+    padding-top: 120px;
+    min-height: 100vh;
   }
 
   .section { padding: 72px 20px; }
@@ -537,9 +515,29 @@ footer {
     gap: 36px;
     text-align: center;
   }
-  .footer-info li { justify-content: center; }
-  .footer-hours > div { justify-content: center; }
-  .footer-bottom { padding: 16px 24px; justify-content: center; text-align: center; }
+
+  .footer-logo {
+    text-align: center;
+  }
+
+  .footer-info li {
+    justify-content: center;
+  }
+
+  .footer-hours > div {
+    display: flex;
+    justify-content: space-between;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .footer-bottom {
+    padding: 16px 24px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  }
 }
 
 /* ── ≤768px  Large phones ── */
