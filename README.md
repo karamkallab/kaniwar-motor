@@ -51,7 +51,7 @@ kaniwar-motor/
 
 ## 🌐 Live Demo
 
-[View Live Site](https://kaniwarmotor.netlify.app)
+[View Live Site](https://6a15600ccc7f33bd27966761--dulcet-sundae-60c19d.netlify.app/)
 
 ---
 
