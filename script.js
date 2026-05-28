@@ -41,9 +41,7 @@ const dotsWrap = document.getElementById('sliderDots');
 let current = 0;
 
 function getPerView() {
-  if (window.innerWidth <= 900)  return 1;
-  if (window.innerWidth <= 1100) return 2;
-  return 3;
+  return 1;
 }
 
 function buildSlider() {
@@ -53,7 +51,7 @@ function buildSlider() {
 
   for (let i = 0; i < reviews.length; i += pv) {
     const page = document.createElement('div');
-    page.className = 'review-page' + (pv === 2 ? ' cols-2' : pv === 1 ? ' cols-1' : '');
+    page.className = 'review-page';
 
     const chunk = reviews.slice(i, i + pv);
     chunk.forEach(r => {
@@ -103,13 +101,13 @@ document.getElementById('nextBtn').addEventListener('click', () => {
 let autoTimer = setInterval(() => {
   const pages = track.querySelectorAll('.review-page').length;
   goTo((current + 1) % pages);
-}, 5000);
+}, 3500);
 track.parentElement.addEventListener('mouseenter', () => clearInterval(autoTimer));
 track.parentElement.addEventListener('mouseleave', () => {
   autoTimer = setInterval(() => {
     const pages = track.querySelectorAll('.review-page').length;
     goTo((current + 1) % pages);
-  }, 5000);
+  }, 3500);
 });
 
 buildSlider();

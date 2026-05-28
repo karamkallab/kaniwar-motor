@@ -254,21 +254,27 @@ nav {
 .reviews-section { background: #0e0e0e; }
 .reviews-section .section { padding-bottom: 80px; }
 .reviews-slider-wrap { position: relative; overflow: hidden; }
-.reviews-track { display: flex; transition: transform 0.5s cubic-bezier(.4,0,.2,1); }
+.reviews-track { display: flex; transition: transform 0.25s cubic-bezier(.4,0,.2,1); }
 .review-page {
-  min-width: 100%; display: grid; gap: 20px; flex-shrink: 0;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: stretch;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 24px;
 }
-.review-page.cols-2 { grid-template-columns: repeat(2, 1fr); }
-.review-page.cols-1 { grid-template-columns: 1fr; }
 .review-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 16px; padding: 36px;
-  display: flex; flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 44px;
+  display: flex;
+  flex-direction: column;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
 }
-.review-stars { color: #ffd166; font-size: 18px; letter-spacing: 2px; margin-bottom: 18px; }
-.review-card p { font-size: 16px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 24px; flex: 1; }
+.review-stars { color: #ffd166; font-size: 19px; letter-spacing: 2px; margin-bottom: 18px; }
+.review-card p { font-size: 17px; line-height: 1.8; font-style: italic; color: var(--text); margin-bottom: 32px; flex: 1; }
 .review-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
 .review-avatar {
   width: 40px; height: 40px; border-radius: 50%;
@@ -277,7 +283,7 @@ nav {
   font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px;
   color: var(--red); flex-shrink: 0;
 }
-.review-name { font-weight: 600; font-size: 15px; }
+.review-name { font-weight: 600; font-size: 17px; }
 .review-source { font-size: 12px; color: #666; }
 .slider-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 36px; }
 .slider-btn {
@@ -502,7 +508,6 @@ footer {
   .services-grid { grid-template-columns: 1fr; }
   .services-guarantee { flex-direction: column; gap: 12px; }
 
-  .review-page { grid-template-columns: 1fr !important; }
 
   .cta-inner { padding: 60px 28px; }
   .cta-details { gap: 28px; }
@@ -580,7 +585,7 @@ footer {
 
   .service-card { padding: 28px 20px; }
 
-  .review-card { padding: 24px 20px; }
+  .review-card { padding: 32px 24px; }
 
   .cta-inner { padding: 40px 20px; border-radius: 16px; }
   .cta-detail-value { font-size: 15px; }
